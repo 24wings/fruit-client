@@ -1,7 +1,7 @@
 export * from './lib.module';
 export * from './service';
 
-
+export { ImageViewerDirective } from './directive/image-viewer.directive';
 
 
 export enum BillType {

@@ -13,6 +13,7 @@ export class ImageViewerDirective {
     if (!this.appImageViewer) {
       this.appImageViewer = { src: image.src, label: image.alt }
     }
+    console.log(this.appImageViewer);
     let divEl = document.createElement('div');
     divEl.innerHTML = `
     <div class="cover">

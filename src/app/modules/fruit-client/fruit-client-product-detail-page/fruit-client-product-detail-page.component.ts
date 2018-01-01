@@ -7,6 +7,7 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap';
   styleUrls: ['./fruit-client-product-detail-page.component.css']
 })
 export class FruitClientProductDetailPageComponent implements OnInit {
+  selectedImage: any;
   product: FruitProduct;
   orderNum: number = 0;
   bsRef: BsModalRef;
