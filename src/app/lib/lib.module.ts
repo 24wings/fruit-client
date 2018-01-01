@@ -1,5 +1,5 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+// import { BrowserModule } from '@angular/platform-browser';
 
 import { RouterModule } from '@angular/router';
 import { HttpModule, JsonpModule } from '@angular/http';
@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ImageViewerDirective } from './directive/image-viewer.directive';
 import { AdminService } from './service/admin.service';
 import { AppFruitService } from './service/app-fruit.service';
+// import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { AppFruitService } from './service/app-fruit.service';
     HttpModule,
     FormsModule,
     JsonpModule,
+    // CommonModule,
     BrowserAnimationsModule
   ],
   declarations: [TitleComponent, TransitionComponent, BgImgDirective,
@@ -29,7 +31,8 @@ import { AppFruitService } from './service/app-fruit.service';
     ImageViewerDirective],
   exports: [
     // BrowserModule,
-    RouterModule,
+    // RouterModule,
+    
     HttpModule,
     FormsModule,
     JsonpModule,

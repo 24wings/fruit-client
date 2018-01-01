@@ -1,6 +1,6 @@
 
 
-import { BrowserModule } from '@angular/platform-browser';
+// import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LibModule } from './lib';
 import { RouterModule } from '@angular/router';
@@ -26,6 +26,7 @@ import { FruitAnalysisComponent } from './pages/admin/fruit-order-system-page/fr
 import { listLocales, defineLocale } from 'ngx-bootstrap/bs-moment';
 import { zhCn } from 'ngx-bootstrap/locale';
 import { FieldImagesComponent } from './com/fields/field-images/field-images.component';
+import { CommonModule } from '@angular/common';
 defineLocale('zh-cn', zhCn);
 
 // import { FruitUserManageComponent } from './admin/fruit-order-system-page/fruit-user-manage/fruit-user-manage.component';
@@ -59,7 +60,7 @@ defineLocale('zh-cn', zhCn);
     ReactiveFormsModule,
     BsDatepickerModule.forRoot(),
     FormsModule,
-    FruitClientModule,
+    // FruitClientModule,
     // RouterModule.forRoot([
       
     // ]),
@@ -78,8 +79,8 @@ defineLocale('zh-cn', zhCn);
           { path: 'fruitOrderSystem', component: FruitOrderSystemPageComponent, data: { label: '水果订购系统' } },
         ]
       }]),
-
-    BrowserModule,  
+      CommonModule,
+    // BrowserModule,  
     LibModule.forRoot()
   ],
   providers: [],
