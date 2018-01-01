@@ -1,0 +1,109 @@
+.product-group {
+    margin-left: -10px;
+    width: 160px;
+}
+
+.product-group .tab {
+    background-image: url(https://www.pantrysbest.com/system/ad_images/pc_images/000/000/011/original/%E7%82%B9%E5%87%BB%E5%89%8DButton.png?1508378842);
+    color: #fff;
+    background-color: #390C20;
+    margin-left: -10px;
+    background-color: #390c20;
+    color: white;
+    border-radius: 8px;
+    width: 100%;
+    display: inline-block;
+    margin-top: 0px;
+    margin-bottom: 6px;
+    padding: 3px;
+    padding-left: 10px;
+    text-decoration: none;
+    background-size: 100% 100%;
+}
+
+.product-group .tab.selected {
+    background-image: url(https://www.pantrysbest.com/system/ad_images/mobile_images/000/000/011/original/button.png?1514516853);
+    color: #ffffff;
+    background-color: #9dc819;
+    width: 100%;
+    color: white;
+    font-weight: bolder;
+    background-color: #85b01d;
+    background-size: 100% 100%;
+}
+
+.product-category .secondary-tab {
+    width: 100%;
+    margin-left: 1px;
+    color: #a7a7a7;
+    text-decoration: none;
+    line-height: 35px;
+}
+
+.product-category-product-set-item .product-set-item-info-container .product-set-item-info-inner-container {
+    margin-top: 30px;
+}
+
+.product-category-product-set-item .product-set-item-info-container {
+    position: relative;
+    height: 100%;
+    float: none;
+    padding-left: 0px;
+    vertical-align: top;
+    color: #aeaeae;
+    padding-right: 0px;
+    margin-left: 25%;
+}
+
+@media (min-width: 768px) {
+    .product-category-product-set-item .product-set-image-container img.product-set-image {
+        width: 200px;
+        height: 200px;
+    }
+}
+
+.product-category-product-set-item .product-set-item-info-container .shopping-cart-icon-container {
+    display: inline-block;
+    width: 140px;
+    bottom: 0px;
+    right: 0px;
+    font-size: 14px;
+    color: #888888;
+    float: right;
+}
+
+.product-category-product-set-item .product-set-item-info-container {
+    position: relative;
+    height: 100%;
+    float: none;
+    padding-left: 0px;
+    vertical-align: top;
+    color: #aeaeae;
+    border-bottom: 1px solid #aeaeae;
+    padding-right: 0px;
+}
+
+.row.product-category-product-set-item {
+    border-bottom: 1px solid #aeaeae;
+}
+
+.height {
+    margin-top: 5%;
+}
+
+.left {
+    margin-left: 5%;
+}
+
+.size {
+    color: #9c2b27;
+    font-size: 20px;
+}
+
+.color {
+    color: #9c2b27;
+}
+
+.top {
+    margin-top: 10%;
+}

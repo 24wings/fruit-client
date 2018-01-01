@@ -6,9 +6,13 @@ import { FruitClientService } from '../fruit-client.service';
   styleUrls: ['./fruit-client-home-page.component.css']
 })
 export class FruitClientHomePageComponent implements OnInit {
-  constructor(){}
-  ngOnInit(){
+  constructor(public fruitClient: FruitClientService) { }
+  ngOnInit() {
 
+  }
+
+  async listRecommandProducts() {
+    await this.fruitClient.listRecommandGroups
   }
 
 }

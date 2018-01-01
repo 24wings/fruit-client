@@ -1,51 +1,42 @@
 <div class="admin-page-contnet">
     <div class="container">
         <div class="col-md-2 col-sm-3 hidden-xs">
-            <ul>
-                <li class="product-group "  *ngFor="let group of groups"  (click)="selectProductGroup(group)">
-                   <a class="tab" [class.selected]="group== selectedProductGroup ">{{group.name}} </a> 
-                   <ng-container *ngIf="selectProductGroup == group">
-                   <div class="product-set" *ngFor="let product of  products">
-                        <a class="secondary-tab" >
-                            {{product.name}}
-                        </a>
-                   </div>
-                </ng-container>
-                    </li>
-            </ul>
+            <app-fruit-client-product-groups (onSelectGroup)="refershProducts($event)"></app-fruit-client-product-groups>
         </div>
         <div class="col-md-10">
-                <div class="row">
-                    <div class="row product-category-product-set-item col-md-12 col-sm-12 col-xs-12" *ngFor="let product of products">
-                        <div class="col-md-3 col-sm-3 col-xs-4 ">
-                            <a  class="has-img-icon">
-                                <img class="width:100%" [src]="product.images[0].url" alt="" class="product-set-image">
+            <div class="row">
+                <div class="row product-category-product-set-item col-md-12 col-sm-12 col-xs-12" *ngFor="let product of products">
+                    <div class="col-md-3 col-sm-3 col-xs-4 ">
+                        <a class="has-img-icon">
+                            <img style="width:100%" [src]="product.images[0].url" alt="" class="product-set-image">
 
-                            </a>
+                        </a>
+                    </div>
+                    <div class="col-md-9 col-sm-9 col-xs-8 ">
+                        <div class="product-set-item-info-inner-container left">
+                            <a href="" class="product-set-header"></a>
+                            <div class="product-price-info height"></div>
+                            <div class="product-medium-description size color">{{product.name}}</div>
+                            <div class="product-medium-description">{{product.price}}</div>
+                            <div class="product-medium-description" style="color: #888888;">{{product.summary}}</div>
+
                         </div>
-                        <div class="col-md-9 col-sm-9 col-xs-8 ">
-                            <div class="product-set-item-info-inner-container left">
-                                <a href="" class="product-set-header"></a>
-                                <div class="product-price-info height"></div>
-                                <div class="product-medium-description size color">{{product.name}}</div>
-                                <div class="product-medium-description">{{product.price}}</div>
-                                <div class="product-medium-description" style="color: #888888;">{{product.summary}}</div>
-                                
-                            </div>
-                            <div class="shopping-cart-icon-container top">
-                                <div class="row add-product-list">
-                                    <div class="col-md-4 col-sm-4 col-xs-4 left_icon">
-                                        <div class="product-set-minus"></div>
-                                    </div>
-                                    <div class="col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-md-1 col-sm-1 col-xs-1 medium_content">0</div>
-                                    <div class="col-md-2 col-sm-2 col-xs-2 right_icon">
-                                        <div class="product-set-plus"><button class="btn btn-danger" [routerLink]="'/fruit-client/product/'+product._id">详情</button></div>
+                        <div class="shopping-cart-icon-container top">
+                            <div class="row add-product-list">
+                                <div class="col-md-4 col-sm-4 col-xs-4 left_icon">
+                                    <div class="product-set-minus"></div>
+                                </div>
+                                <div class="col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-md-1 col-sm-1 col-xs-1 medium_content">0</div>
+                                <div class="col-md-2 col-sm-2 col-xs-2 right_icon">
+                                    <div class="product-set-plus">
+                                        <button class="btn btn-danger" [routerLink]="'/fruit-client/product'" [queryParams]="{productId:product._id}">详情</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
         </div>
     </div>
 </div>

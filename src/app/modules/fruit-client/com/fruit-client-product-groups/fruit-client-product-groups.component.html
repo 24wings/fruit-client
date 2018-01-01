@@ -1,0 +1,12 @@
+<ul>
+  <li class="product-group " *ngFor="let group of groups" (click)="selectProductGroup(group)">
+    <a class="tab" [class.selected]="group== selectedProductGroup ">{{group.name}} </a>
+    <ng-container *ngIf="selectProductGroup == group">
+      <div class="product-set" *ngFor="let product of  products">
+        <a class="secondary-tab">
+          {{product.name}}
+        </a>
+      </div>
+    </ng-container>
+  </li>
+</ul>

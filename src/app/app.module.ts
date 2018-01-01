@@ -27,6 +27,7 @@ import { listLocales, defineLocale } from 'ngx-bootstrap/bs-moment';
 import { zhCn } from 'ngx-bootstrap/locale';
 import { FieldImagesComponent } from './common/fields/field-images/field-images.component';
 import { CommonModule } from '@angular/common';
+// import { FruitClientShopingCarPageComponent } from './modules/fruit-client/fruit-client-shoping-car-page/fruit-client-shoping-car-page.component';
 defineLocale('zh-cn', zhCn);
 
 // import { FruitUserManageComponent } from './admin/fruit-order-system-page/fruit-user-manage/fruit-user-manage.component';
@@ -49,7 +50,7 @@ defineLocale('zh-cn', zhCn);
     FruitProductManageComponent,
     FruitAnalysisComponent,
     FieldImagesComponent,
-
+    // FruitClientShopingCarPageComponent,
     FruitUserManageComponent
   ],
   imports: [
@@ -62,13 +63,13 @@ defineLocale('zh-cn', zhCn);
     FormsModule,
     // FruitClientModule,
     // RouterModule.forRoot([
-      
+
     // ]),
     RouterModule.forRoot([
       // { path: '', redirectTo: '/admin/signin', pathMatch: 'full', data: {} },
-      { path: '', redirectTo: '/fruit-client', pathMatch: 'full',data:{label:'default'} },
-      { path: 'fruit-client', loadChildren: 'app/modules/fruit-client/fruit-client.module#FruitClientModule',data:{label:'水果客户端'} },
-      
+      { path: '', redirectTo: '/fruit-client', pathMatch: 'full', data: { label: 'default' } },
+      { path: 'fruit-client', loadChildren: 'app/modules/fruit-client/fruit-client.module#FruitClientModule', data: { label: '水果客户端' } },
+
       { path: 'admin/signin', component: AdminSigninPageComponent, data: { label: '登录' } },
       // { path: 'fruit-client', loadChildren: 'app/module/fruit-client/fruit-client.module#FruitClientModule' },
       {
@@ -79,7 +80,7 @@ defineLocale('zh-cn', zhCn);
           { path: 'fruitOrderSystem', component: FruitOrderSystemPageComponent, data: { label: '水果订购系统' } },
         ]
       }]),
-      CommonModule,
+    CommonModule,
     // BrowserModule,  
     LibModule.forRoot()
   ],
