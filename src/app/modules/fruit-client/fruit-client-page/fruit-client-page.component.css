@@ -1,0 +1,14 @@
+.dropdown-menu{
+    top: 95%;
+    /* background: #1385e5; */
+}
+.xs.nav.navbar-nav li {
+    display: inline-block;
+}
+.dropdown-menu li,.dropdown-menu li a {
+   color:#000 !important;
+}
+
+.page-content{
+    margin-top:60px;
+}

@@ -1,0 +1,84 @@
+<!-- 大屏幕导航 -->
+<nav class="navbar navbar-default navbar-fixed-top hidden-xs" role="navigation">
+        <!-- <a class="navbar-brand" href="#">Title</a> -->
+        <div class="navbar-content">
+          <div class="navbar-left">
+            <ul class="nav navbar-nav">
+      
+              <li class="active">
+                <a routerLink="/fruit-client/">首页</a>
+              </li>
+              <li>
+                <a dropdown dropdownToggle>产品列表 <i class="glyphicon glyphicon-chevron-down"></i>
+                        <ul *dropdownMenu class="dropdown-menu" role="menu">
+                          <li role="menuitem" *ngFor="let group of groups"><a class="dropdown-item"   [queryParams]="{groupId:group._id}" routerLink="/fruit-client/groups">{{group.name}}</a></li>
+                           
+                        </ul>
+                    </a>
+                      
+              </li>
+              <li>
+                  <a>我的订单</a>
+              </li>
+            </ul>
+          </div>
+          <div class="navbar-right">
+            <ul class="nav navbar-nav">
+              <li *ngIf="user">
+                <a>你好,{{user.nickname}}</a>
+              </li>
+              <li *ngIf="!user"  routerLink="/fruit-client/signin">
+                <a >登录</a>
+              </li>
+      
+              <li class="active" *ngIf="user">
+                <a (click)="logout()">退出</a>
+              </li>
+      
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+      
+      <!-- 小屏幕导航 -->
+      <nav class="navbar navbar-default navbar-fixed-top  visible-xs ">
+      
+        <ul class="xs nav navbar-nav">
+          <li>
+            <a routerLink="/admin/home">
+              <i class="glyphicon glyphicon-th"></i> 首页 </a>
+          </li>
+          <li>
+                <a dropdown dropdownToggle>产品列表 <i class="glyphicon glyphicon-chevron-down"></i>
+                        <ul *dropdownMenu class="dropdown-menu" style="position:absolute" role="menu">
+                          <li role="menuitem" *ngFor="let group of groups"><a class="dropdown-item"  routerLink="/fruit-client/groups/{{group._id}}">{{group.name}}</a></li>
+                           
+                        </ul>
+                    </a>
+                      
+              </li>
+        
+          <li>
+            <a (click)="logout()">
+              <i class="glyphicon glyphicon-th"></i> 退出 </a>
+          </li>
+          <li *ngIf="user">
+                <a>你好,{{user.nickname}}</a>
+              </li>
+              <li *ngIf="!user" routerLink="/fruit-client/signin">
+                <a >登录</a>
+              </li>
+      
+              <li class="active" *ngIf="user">
+                <a (click)="logout()">退出</a>
+              </li>
+      
+      
+        </ul>
+      
+      </nav>
+
+      <div class="page-content">
+<router-outlet></router-outlet>
+</div>
