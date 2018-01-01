@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { BsDropdownModule, ModalModule, CarouselModule } from 'ngx-bootstrap';
+import { BsDropdownModule, ModalModule, CarouselModule, AlertModule } from 'ngx-bootstrap';
 import { FruitClientHomePageComponent } from './fruit-client-home-page/fruit-client-home-page.component';
 import { FruitClientSigninPageComponent } from './fruit-client-signin-page/fruit-client-signin-page.component';
 import { HttpModule } from '@angular/http';
@@ -12,6 +12,8 @@ import { FruitClientPageComponent } from './fruit-client-page/fruit-client-page.
 import { FruitClientProductDetailPageComponent } from './fruit-client-product-detail-page/fruit-client-product-detail-page.component';
 import { FruitClientProductGroupsPageComponent } from './fruit-client-product-groups-page/fruit-client-product-groups-page.component';
 import { FruitClientShopingCarPageComponent } from './fruit-client-shoping-car-page/fruit-client-shoping-car-page.component';
+import { FieldImagesComponent } from '../../common/fields/field-images/field-images.component';
+
 import { FruitClientProductGroupsComponent } from './com/fruit-client-product-groups/fruit-client-product-groups.component';
 import { CloudinaryModule } from '@cloudinary/angular-5.x';
 import * as  Cloudinary from 'cloudinary-core';
@@ -20,9 +22,11 @@ import * as  Cloudinary from 'cloudinary-core';
     CommonModule,
     HttpModule,
     RouterModule,
+    AlertModule.forRoot(),
+
     BsDropdownModule.forRoot(),
     FormsModule,
-    ModalModule,
+    ModalModule.forRoot(),
     CarouselModule.forRoot(),
     CloudinaryModule.forRoot(Cloudinary, { cloud_name: 'dnf1ydl7w' }),
     RouterModule.forChild([
@@ -46,6 +50,6 @@ import * as  Cloudinary from 'cloudinary-core';
     FruitClientProductDetailPageComponent,
     FruitClientProductGroupsPageComponent,
     FruitClientShopingCarPageComponent,
-    FruitClientProductGroupsComponent]
+    FruitClientProductGroupsComponent, FieldImagesComponent]
 })
 export class FruitClientModule { }
