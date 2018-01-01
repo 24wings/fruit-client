@@ -1,0 +1,293 @@
+<div class="container">
+  <input class="search  col-md-6 col-sm-6 col-xs-10 col-xs-offset-1" placeholder="昵称搜索" (keyup)="search(searchBox.value)" #searchBox
+    type="search" *ngIf="state==Views.ListProductGroup">
+
+</div>
+<div class="container" *ngIf="selectedProductGroup">
+  <ul class="nav nav-pills" role="tablist">
+    <li role="presentation">
+      <a>商品种类:
+        <span class="badge" style="background:brown"> {{productGroups.length}}</span>
+      </a>
+    </li>
+    <ng-container *ngFor="let group of productGroups;let i = index">
+      <li role="presentation" [class.active]="selectedProductGroup==group" (click)="selectProductGroup(group);" *ngIf="showMoreProductGroup?true:i<3">
+        <a>{{group.name}}
+          <span class="badge">{{group.products.length}}</span>
+          <span class="badge" *ngIf="group.isRecommand">
+            <i class="glyphicon glyphicon-heart red"></i>
+          </span>
+        </a>
+      </li>
+
+    </ng-container>
+
+    <!-- 添加 商品种类按钮 -->
+    <li class="btn btn-success" (click)="state=Views.CreateProductGroup">
+
+      <i class="glyphicon glyphicon-plus"></i>
+    </li>
+  </ul>
+
+
+  <!-- 工具条 -->
+  <div class="actions">
+    <ul class="nav nav-pills actions left" role="tablist">
+
+      <!-- 批量删除管理按钮 -->
+      <!-- <li class="btn btn-primary" (click)="toggleGroupRecommand(selectedProductGroup)" *ngIf="!selectedProductGroup.isRecommand">
+
+        <i class="glyphicon glyphicon-heart red"></i>
+      </li>
+      <li class="btn btn-info" *ngIf="selectedProductGroup.isRecommand" (click)="toggleGroupRecommand(selectedProductGroup)">
+        取消推荐
+        <i class="glyphicon glyphicon-heart" style="color:#fff"></i>
+      </li>
+       -->
+    </ul>
+    <ul class="nav nav-pills actions right" role="tablist">
+      <li class="btn " (click)="state=Views.ListProductGroup" *ngIf="state!=Views.ListProductGroup">
+        <i class="glyphicon glyphicon-home"></i>
+      </li>
+      <!-- 添加 商品种类按钮 -->
+      <li class="btn " (click)="state=Views.CreateProduct" *ngIf="state!=Views.CreateProduct">
+        <i class="glyphicon glyphicon-plus"></i>
+      </li>
+      <!-- 批量删除管理按钮 -->
+      <li class="btn ">
+        <i class="glyphicon glyphicon-wrench"></i>
+      </li>
+      <li class="btn " *ngIf="!showMoreProductGroup" (click)="showMoreProductGroup=true">
+        <i class="glyphicon glyphicon-resize-full"></i>
+      </li>
+      <li class="btn " *ngIf="showMoreProductGroup" (click)="showMoreProductGroup=false">
+        <i class="glyphicon glyphicon-resize-small"></i>
+      </li>
+      <li class="btn " (click)="deleteProductGroup()">
+        <i class="glyphicon glyphicon-trash  icon-2x"></i>
+      </li>
+    </ul>
+  </div>
+
+
+  <!-- 修改产品组信息 -->
+  <div class="container" *ngIf="state==Views.ListProductGroup && selectedProductGroup">
+    <form (ngSubmit)="updateProductGroup()" [formGroup]="productGroupFormGroup">
+      <div class="form-row">
+        <!-- <app-field [field]="field" [form]="productGroupFormGroup"></app-field> -->
+        <label>产品组名称:</label>
+        <!-- text 输入框 -->
+        <input type="string" class="form-control" [formControlName]="'name'" [(ngModel)]="selectedProductGroup.name" placeholder="产品组名称">
+        <div (click)="selectImage()" class="center">
+          <div class="col-xs-4 col-md-4">
+            预览图片:
+            <i class="glyphicon glyphicon-picture icon-2x"></i>
+          </div>
+          <div class="col-xs-8 col-md-8">
+            <!-- 隐藏输入框 -->
+            <input type="text" hidden [formControlName]="'image'">
+            <!-- {{preview.src}} -->
+            <img class="img-responsive" [src]=" selectedProductGroup.image?(selectedProductGroup.image.url?selectedProductGroup.image.url:selectedProductGroup.image):''  ">
+          </div>
+        </div>
+        <div class="row">
+          <!-- 选择框 -->
+          <div (click)="selectedProductGroup.isRecommand=!selectedProductGroup.isRecommand">
+            <button class="checkbox " [class.checked]="selectedProductGroup.isRecommand"></button>
+            <label>是否推荐</label>
+          </div>
+
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-primary" [disabled]="productGroupFormGroup.pristine">更新</button>
+          <button type="reset" class="btn btn-default">重置</button>
+        </div>
+      </div>
+    </form>
+    <!-- <div class="row"> -->
+    <!-- <div class="col-xs-6 text-left"> -->
+    <!-- <div class="row"> -->
+    <!-- 
+          <button class="checkbox" [class.checked]="selectedProductGroup.isRecommand" (click)="selectedProductGroup.isRecommand=!selectedProductGroup.isRecommand"></button>
+          {{selectedProductGroup.isRecommand?"取消推荐":"推荐"}}
+
+        </div>
+        <div class="row">
+          产品分类: {{selectedProductGroup?.name}}
+
+        </div>
+        <div class="row">
+          产品数量:{{selectedProductGroup?.products.length}}
+
+        </div> -->
+
+    <!-- <div class="row">产品数量:{{selectedProductGroup.num}} </div> -->
+
+    <!-- </div> -->
+    <!-- <div class="col-xs-6 "> -->
+    <!-- <img appImageViewer [src]="selectedProductGroup.image.url" alt="1/1" class="img-responsive"> -->
+    <!-- </div> -->
+    <!-- </div> -->
+    <!-- </div> -->
+
+
+
+
+    <!-- 商品列表 -->
+    <table class="table" *ngIf="state==Views.ListProductGroup">
+      <thead>
+        <tr>
+          <th></th>
+          <th>名字</th>
+          <th>价格</th>
+          <th>库存</th>
+          <th>简介</th>
+          <th>预览</th>
+          <th>推荐状态</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of selectedProductGroup?.products">
+          <td>
+            <i class="glyphicon glyphicon-trash" (click)="showDeleteProductConfirm(product);"></i>
+          </td>
+          <td style="text-decoration: underline green;" (click)="selectProduct(product)">{{product.name}}</td>
+          <td>{{product.price}}</td>
+
+          <td>{{product.store}}</td>
+
+          <td>{{product.summary}}</td>
+          <td>
+            <div class="row">
+              <div style="max-height:25px" class="col-xs-1 table-images" *ngFor="let image of product.images">
+                <img [src]="image.url" alt="" class="img-responsive" appImageViewer> </div>
+            </div>
+          </td>
+          <td>
+            <i class="glyphicon glyphicon-heart red"></i>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+
+  </div>
+
+
+
+
+  <!-- 创建商品种类 -->
+
+  <div *ngIf="state==Views.CreateProductGroup">
+
+    <div class="container" style="margin-top:20px;">
+      <form (ngSubmit)="saveNewProductGroup()" [formGroup]="productGroupFormGroup">
+        <div class="row">
+          <div class="col-xs-12 id" *ngIf="false">
+            ID:5a3ecf8789eb541a34b370be
+          </div>
+        </div>
+        <div *ngFor="let field of productGroupFields" class="form-row">
+          <app-field [field]="field" [form]="productGroupFormGroup"></app-field>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <button type="submit" class="btn btn-primary" [disabled]="productGroupFormGroup.pristine">保存</button>
+            <button type="reset" class="btn btn-default">重置</button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- 创建商品 -->
+  <div *ngIf="state==Views.CreateProduct">
+
+    <div class="container" style="margin-top:20px;">
+      <form (ngSubmit)="saveProduct()" [formGroup]="productFormGroup">
+        <div class="row">
+          <div class="col-xs-12 id" *ngIf="false">
+            ID:5a3ecf8789eb541a34b370be
+          </div>
+        </div>
+        <div *ngFor="let field of productFields" class="form-row">
+          <app-field [field]="field" [form]="productFormGroup"></app-field>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-12">
+            <button type="submit" class="btn btn-primary" [disabled]="productFormGroup.pristine">保存</button>
+            <button type="reset" class="btn btn-default">重置</button>
+          </div>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+
+
+  <!-- 删除产品 -->
+  <ng-template #deleteProductTemplate>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">确认删除?</h4>
+      <button type="button" class="close pull-right" aria-label="Close" (click)="bsRef.hide()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      确认删除{{selectedProduct.name}}吗?
+    </div>
+    <div class="modal-footer">
+      <div class="btn btn-danger" (click)="deleteProduct();bsRef.hide();">确认删除</div>
+      <button type="button" class="btn btn-default" (click)="bsRef.hide()">关闭</button>
+    </div>
+
+  </ng-template>
+
+  <!-- 修改 产品 -->
+
+  <div class="container" *ngIf="state==Views.ProductDetail && selectedProduct">
+    <form (ngSubmit)="updateProduct()" [formGroup]="productFormGroup">
+      <div class="form-row">
+        <!-- <app-field [field]="field" [form]="productGroupFormGroup"></app-field> -->
+        <label>产品名称:</label>
+        <!-- text 输入框 -->
+        <input type="string" class="form-control" [formControlName]="'name'" [(ngModel)]="selectedProduct.name" placeholder="产品名称">
+        <div class="row">
+          <label>产品价格:</label>
+          <input type="string" class="form-control" [formControlName]="'price'" [(ngModel)]="selectedProduct.price" placeholder="产品价格">
+        </div>
+        <div class="row">
+          <label for="">产品库存</label>
+          <input type="string" class="form-control" [formControlName]="'store'" [(ngModel)]="selectedProduct.store" placeholder="产品库存">
+
+        </div>
+        <div class="row">
+          <label for="">产品简介</label>
+          <input type="string" class="form-control" [formControlName]="'summary'" [(ngModel)]="selectedProduct.summary" placeholder="产品简介">
+        </div>
+        <div class="center">
+          <div class="col-xs-4 col-md-4">
+            预览图片:
+            <i class="glyphicon glyphicon-picture icon-2x"></i>
+          </div>
+          <div class="col-xs-8 col-md-8">
+            <!-- {{selectedProduct.images |json}} -->
+            <app-field-images [images]="selectedProduct.images"></app-field-images>
+          </div>
+
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-primary">更新</button>
+          <button type="reset" class="btn btn-default">重置</button>
+        </div>
+      </div>
+    </form>

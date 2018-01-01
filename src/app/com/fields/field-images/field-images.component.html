@@ -1,0 +1,9 @@
+<div class="row">
+  <div *ngFor="let image of images" class="col-xs-2 col-md-1">
+    <img [src]="image.url?image.url:image" alt="" class="img-responsive" appImageViewer>
+    <button (click)="removeImage(image)" class="btn">移除</button>
+  </div>
+  <div>
+    <i class="glyphicon glyphicon-plus" (click)="addImage()"></i>
+  </div>
+</div>

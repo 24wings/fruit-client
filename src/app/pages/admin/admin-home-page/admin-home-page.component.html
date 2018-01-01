@@ -1,0 +1,39 @@
+<!-- dashboard -->
+
+<app-nav></app-nav>
+
+<div class="dashboard-group">
+  <span>
+    <i class="icon-yingyong3 iconfont icon-2x" style="color:cornflowerblue"></i>
+  </span>
+  <div class="dashboard-group-heading">
+    添加的应用
+  </div>
+  <div class="app-list row">
+    <div class="col-md-3 col-xs-10 col-xs-offset-1 col-sm-4 app-item">
+      <a routerLink="/admin/fruitOrderSystem">
+
+        <span class="app-summary">
+          <span class="app-label">水果订购系统</span>
+          <br>
+          <span>专为水果订购商人,量身定制的App应用 </span>
+        </span>
+
+      </a>
+      <div class="app-icon circle icon" (click)="removeApp()">
+        <span>
+          <i class="iconfont icon-yichu icon-2x" style="color: coral;"></i>
+        </span>
+      </div>
+
+    </div>
+
+  </div>
+  <app-app-group></app-app-group>
+
+</div>
+
+
+<!-- <app-transition> -->
+
+<!-- </app-transition> -->
