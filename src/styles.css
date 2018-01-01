@@ -284,3 +284,7 @@ h1,
 .field {
   margin: 25px auto;
 }
+
+.thumbnail>img {
+  width: 100%;
+}

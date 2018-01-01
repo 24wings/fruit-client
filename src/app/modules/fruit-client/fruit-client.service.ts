@@ -22,8 +22,8 @@ export class FruitClientService {
   async listRecommandGroups() {
     return this.api.Get(this.listRecommandGroupsApi + '?adminId=' + this.adminId);
   }
-  async listReommandProducts() {
-    return this.api.Get(this.listRecommandProductsApi);
+  async listRecommandProducts() {
+    return this.api.Get(this.listRecommandProductsApi + '?adminId=' + this.adminId);
   }
 
   async userLogin(phone, password) {

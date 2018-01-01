@@ -6,13 +6,16 @@ import { FruitClientService } from '../fruit-client.service';
   styleUrls: ['./fruit-client-home-page.component.css']
 })
 export class FruitClientHomePageComponent implements OnInit {
+  products: FruitProduct[] = [];
+  groups: FruitProductGroup[] = []
   constructor(public fruitClient: FruitClientService) { }
   ngOnInit() {
-
+    this.listRecommandProductsAndGroups();
   }
 
-  async listRecommandProducts() {
-    await this.fruitClient.listRecommandGroups
+  async listRecommandProductsAndGroups() {
+    this.products = await this.fruitClient.listRecommandProducts();
+    this.groups = await this.fruitClient.listRecommandGroups();
   }
 
 }

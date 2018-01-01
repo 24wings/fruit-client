@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ImageViewerDirective } from './directive/image-viewer.directive';
 import { AdminService } from './service/admin.service';
 import { AppFruitService } from './service/app-fruit.service';
+
 // import { CommonModule } from '@angular/common';
 
 @NgModule({
@@ -28,11 +29,12 @@ import { AppFruitService } from './service/app-fruit.service';
   ],
   declarations: [TitleComponent, TransitionComponent, BgImgDirective,
     BackDirective,
-    ImageViewerDirective],
+    ImageViewerDirective,
+  ],
   exports: [
     // BrowserModule,
     // RouterModule,
-    
+
     HttpModule,
     FormsModule,
     JsonpModule,

@@ -6,6 +6,7 @@ import { LibModule } from './lib';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 // import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+
 import { TabsModule, ModalModule, BsDropdownModule, AlertModule, BsDatepickerModule } from 'ngx-bootstrap'
 import { FruitClientModule } from './modules/fruit-client/fruit-client.module';
 import { AppComponent } from './app.component';
@@ -27,6 +28,7 @@ import { listLocales, defineLocale } from 'ngx-bootstrap/bs-moment';
 import { zhCn } from 'ngx-bootstrap/locale';
 import { FieldImagesComponent } from './common/fields/field-images/field-images.component';
 import { CommonModule } from '@angular/common';
+import { CloudinaryImageComponent } from './common/cloudinary-image/cloudinary-image.component';
 // import { FruitClientShopingCarPageComponent } from './modules/fruit-client/fruit-client-shoping-car-page/fruit-client-shoping-car-page.component';
 defineLocale('zh-cn', zhCn);
 
@@ -51,7 +53,8 @@ defineLocale('zh-cn', zhCn);
     FruitAnalysisComponent,
     FieldImagesComponent,
     // FruitClientShopingCarPageComponent,
-    FruitUserManageComponent
+    FruitUserManageComponent,
+    CloudinaryImageComponent
   ],
   imports: [
     AlertModule.forRoot(),

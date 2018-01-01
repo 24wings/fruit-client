@@ -13,7 +13,8 @@ import { FruitClientProductDetailPageComponent } from './fruit-client-product-de
 import { FruitClientProductGroupsPageComponent } from './fruit-client-product-groups-page/fruit-client-product-groups-page.component';
 import { FruitClientShopingCarPageComponent } from './fruit-client-shoping-car-page/fruit-client-shoping-car-page.component';
 import { FruitClientProductGroupsComponent } from './com/fruit-client-product-groups/fruit-client-product-groups.component';
-
+import { CloudinaryModule } from '@cloudinary/angular-5.x';
+import * as  Cloudinary from 'cloudinary-core';
 @NgModule({
   imports: [
     CommonModule,
@@ -23,6 +24,7 @@ import { FruitClientProductGroupsComponent } from './com/fruit-client-product-gr
     FormsModule,
     ModalModule,
     CarouselModule.forRoot(),
+    CloudinaryModule.forRoot(Cloudinary, { cloud_name: 'dnf1ydl7w' }),
     RouterModule.forChild([
       {
         path: '', component: FruitClientPageComponent, children: [
