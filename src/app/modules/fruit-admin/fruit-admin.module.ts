@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
+
+import { FieldImagesComponent } from '../../common/fields/field-images/field-images.component';
+
 import { AppGroupComponent } from '../../modules/admin/admin-home-page/app-group/app-group.component';
 import { NavComponent } from '../../common/nav/nav.component';
 import { TextComponent } from '../../common/fields/text/text.component';
@@ -18,10 +22,9 @@ defineLocale('zh-cn', zhCn);
 
 @NgModule({
   imports: [
-    NavComponent,
-    TextComponent,
-    FieldComponent,
-    FormComponent,
+    FormsModule,
+    ReactiveFormsModule,
+
     RouterModule.forChild([{ path: '', component: FruitOrderSystemPageComponent }]),
     HttpModule,
     CommonModule,
@@ -31,6 +34,12 @@ defineLocale('zh-cn', zhCn);
     AlertModule.forRoot(),
     BsDatepickerModule.forRoot()
   ],
-  declarations: [FruitOrderSystemPageComponent, FruitAnalysisComponent, FruitProductManageComponent, FruitUserManageComponent]
+  declarations: [
+    NavComponent,
+    TextComponent,
+    FieldComponent,
+    FormComponent,
+    FieldImagesComponent,
+    FruitOrderSystemPageComponent, FruitAnalysisComponent, FruitProductManageComponent, FruitUserManageComponent]
 })
 export class FruitAdminModule { }

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { LibModule } from '../../lib';
+import { LibModule, ConfigService } from '../../lib';
 import { NavComponent } from '../../common/nav/nav.component';
 import { AppGroupComponent } from '../admin/admin-home-page/app-group/app-group.component';
 import { AdminHomePageComponent } from './admin-home-page/admin-home-page.component';
@@ -19,8 +19,9 @@ import { AdminSigninPageComponent } from './admin-signin-page/admin-signin-page.
       ]
     }]),
     CommonModule,
-    LibModule.forRoot(),
+
   ],
+  providers: [ConfigService],
   declarations: [AdminPageComponent,
     AdminHomePageComponent,
     AdminSigninPageComponent,
