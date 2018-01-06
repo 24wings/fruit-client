@@ -5,7 +5,7 @@ import { RouterModule } from '@angular/router';
 import { HttpModule, JsonpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { CommonService, ConfigService, ApiService, DbService, WechatService } from './service';
-import { MoneyPipe, ArrTruePipe } from './pipe';
+// import { MoneyPipe, ArrTruePipe } from './pipe';
 import { BackDirective, BgImgDirective } from './directive';
 import { TitleComponent } from './com/title/title.component';
 import { TransitionComponent } from './com/transition/transition.component';
@@ -27,7 +27,8 @@ import { AppFruitService } from './service/app-fruit.service';
     // CommonModule,
     BrowserAnimationsModule
   ],
-  declarations: [TitleComponent, TransitionComponent, BgImgDirective,
+  declarations: [TitleComponent,
+    TransitionComponent, BgImgDirective,
     BackDirective,
     ImageViewerDirective,
   ],
@@ -47,9 +48,9 @@ import { AppFruitService } from './service/app-fruit.service';
   ],
   providers: [ConfigService, ApiService, CommonService, DbService, WechatService,
     AdminService,
-    MoneyPipe, ArrTruePipe,
+    // MoneyPipe, ArrTruePipe,
     BackDirective, BgImgDirective,
-    AppFruitService
+    AppFruitService, ImageViewerDirective
   ]
 })
 export class LibModule {
@@ -58,8 +59,8 @@ export class LibModule {
       ngModule: LibModule,
       providers: [
         ConfigService, ApiService, CommonService, DbService, WechatService,
-        MoneyPipe, ArrTruePipe,
-        BackDirective, BgImgDirective
+        // MoneyPipe, ArrTruePipe,
+        BackDirective, BgImgDirective, ImageViewerDirective
       ],
 
     }

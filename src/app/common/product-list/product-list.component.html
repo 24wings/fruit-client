@@ -1,0 +1,74 @@
+<ul class="list-unstyled clearfix">
+  <li class="youtube-list-item" [@fadeIn] *ngFor="let product of products">
+    <product-info [product]="product" (addShopingCar)="selectedProduct=$event;isUserLogin?showModel(orderTemplate):showLoginModel(loginTemplate) "
+      (onBuyProduct)="selectedProduct=$event;isUserLogin?showModel(orderTemplate):showLoginModel(loginTemplate) ">
+    </product-info>
+  </li>
+</ul>
+
+<ng-template #loginTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">尚未登录</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    请先登录
+
+
+    <div role="form">
+      <alert type='"danger"' *ngIf="errorMsg" [dismissOnTimeout]="3000">{{errorMsg}}</alert>
+      <div class="form-group">
+        <label for="">手机号</label>
+        <input type="number" class="form-control" [(ngModel)]="user.phone" placeholder="手机号">
+      </div>
+
+      <div class="form-group">
+        <label for="">密码</label>
+        <input type="password" [(ngModel)]="user.password" class="form-control" placeholder="密码">
+      </div>
+
+
+
+
+      <button class="btn btn-primary" (click)="userLogin()">登录</button>
+      <button class="btn btn-info">致电商家</button>
+    </div>
+
+  </div>
+</ng-template>
+
+<!-- 产品数量 -->
+<ng-template #orderTemplate>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">订购{{selectedProduct?.name}} - {{buyNum}} 件</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    订购{{selectedProduct?.name}}
+    <div class="thumbnail">
+      <img [src]="selectedProduct?.images[0].url" alt="" class="thumb-image">
+    </div>
+    <div>
+      <div class="btn-group btn-group-sm navbar-btn ">
+        <button class="btn btn-default " (click)="buyNum >0?buyNum-1 :buyNum=1">-</button>
+        <button class="btn btn-default active">{{buyNum}}</button>
+        <button class="btn btn-default " (click)="buyNum = buyNum+1">+</button>
+        <button class="btn btn-default "> 斤</button>
+      </div>
+    </div>
+
+
+
+
+    <button class="btn btn-primary" (click)="addShopingCar()" *ngIf="buyNum>0">加入购物车</button>
+    <button class="btn btn-primary" (click)="buyProduct()" *ngIf="buyNum>0">直接订购</button>
+
+    <button class="btn btn-info">致电商家</button>
+  </div>
+
+
+</ng-template>

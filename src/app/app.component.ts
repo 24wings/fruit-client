@@ -1,10 +1,24 @@
-import { Component } from '@angular/core';
+
+import { Component, HostBinding, OnInit } from '@angular/core';
+
+import 'rxjs/add/operator/let';
 
 @Component({
-  selector: 'app-root',
+  selector: 'body',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
-  title = 'app';
+export class AppComponent implements OnInit {
+  sidebarColsed: boolean = false;
+
+  @HostBinding('class')
+  style = '北极';
+
+  constructor() {
+
+  }
+
+  ngOnInit() {
+
+  }
 }

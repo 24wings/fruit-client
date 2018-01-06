@@ -1,0 +1,35 @@
+<div id="sidebar" class="sidebar ux-maker" [class.closed]="sidebarCollapsed">
+  <div class="sidebar-backdrop" (click)="toggleSidebar()"></div>
+  <nav class="navbar navbar-transparent">
+    <app-brand (onToggleSidebar)="toggleSidebar()"></app-brand>
+    <div class="list-group" [class.closed]="closed">
+      <ng-container *ngFor="let route of routes;">
+        <button class="list-group-item ux-maker" *ngIf="selectedRoute!=route" (click)="selectRoute(route)">
+          <i class="{{ route.icon }}"></i>
+          <span class="text">{{ route.label }}</span>
+        </button>
+
+      </ng-container>
+      <button class="list-group-item ux-maker" *ngIf="selectedRoute" (click)="selectRoute(selectedRoute)">
+        <i class="{{ selectedRoute.icon }}"></i>
+        <span class="text">{{ selectedRoute.label }}</span>
+      </button>
+
+
+    </div>
+  </nav>
+  <div class="now-playlist">
+    <div class="sidebar-pane">
+      <ng-container [ngSwitch]="selectedRoute.link">
+        <app-shopinglist-view *ngSwitchCase="'oldOrder'" [orderState]="FruitOrderState.Finish" #listView>
+
+        </app-shopinglist-view>
+        <app-shopinglist-view *ngSwitchCase="'sendingProduct'" [orderState]="FruitOrderState.SendProduct" #listView>
+
+        </app-shopinglist-view>
+        <app-shopinglist-view *ngSwitchDefault [orderState]="FruitOrderState.UnConfirm" #listView></app-shopinglist-view>
+      </ng-container>
+    </div>
+  </div>
+
+</div>

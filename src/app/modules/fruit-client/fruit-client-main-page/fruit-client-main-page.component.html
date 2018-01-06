@@ -1,0 +1,60 @@
+<!-- <loader [message]="'Loading '" [loading]="loading"></loader> -->
+<!-- <product-list [products]="products"></product-list> -->
+
+
+<!-- <article infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollDisabled]="currentPlaylist$ | async" (scrolled)="searchMore()"
+  [immediateCheck]="true"> -->
+<article>
+
+  <div class="navbar-header">
+    <div class="app-navbar">
+      <nav class="row navbar navbar-default navbar-fixed-top">
+        <div class="navbar-container">
+          <div class="navbar__content">
+            <h3 *ngIf="header" class="navbar__header navbar-text">
+              <button *ngIf="mainIcon" class="navbar-btn__main btn-transparent" (click)="handleMainIconClick()">
+                <i class="fa fa-{{ mainIcon }}"></i>
+              </button>
+              <i class="fa fa-{{ headerIcon }}" *ngIf="headerIcon"></i> {{ header }}
+            </h3>
+            <div class="product-search">
+              <form class="navbar-form form-search">
+                <div class="form-group clearfix">
+                  <!-- " #mediaSearch ngxTypeahead [taUrl]="'http://suggestqueries.google.com/complete/search'"
+                            [taParams]="params" (taSelected)="handleSelectSuggestion($event)" type="search" class="form-control" autocomplete="off"
+                            name="mediaSearch" formControlName="searchInput" -->
+                  <input placeholder="搜索产品,关键字" id="media-search" class="form-control">
+                  <button class="btn btn-transparent btn-submit" type="submit" tooltip="点击搜索">
+                    <i class="fa fa-search"></i>
+                  </button>
+                </div>
+                <btn-group (onThemeChange)="themeChange($event)"></btn-group>
+              </form>
+            </div>
+          </div>
+
+
+          <section class="navbar-text navbar-actions">
+
+
+
+          </section>
+        </div>
+      </nav>
+
+      <!-- <button class="btn btn-navbar btn-link ux-maker btn-toggle" (click)="toggleMenu()">
+          <i class="fa fa-ellipsis-v"></i>
+          <i *ngIf="appVersion?.isNewAvailable" class="pulse update-indicator fa fa-dot-circle-o text-primary"></i>
+        </button>
+     -->
+    </div>
+    <!-- <product-search (search)="search($event)"></product-search> -->
+  </div>
+
+  <!-- <button-group class="nav-toolbar" [buttons]="presets$ | async" [selectedButton]="queryParamPreset$ | async" (buttonClick)="updatePreset($event)"></button-group> -->
+  <!-- <search-navigator></search-navigator> -->
+
+  <!-- <router-outlet></router-outlet> -->
+  <app-products-page (onRefershOrder)="refershOrder()"></app-products-page>
+  <!-- </article> -->
+</article>

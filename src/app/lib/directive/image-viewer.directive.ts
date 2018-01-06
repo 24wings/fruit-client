@@ -10,6 +10,7 @@ export class ImageViewerDirective {
   @Input() appImageViewer: { src: string, label?: string, summary?: string };// = { src: 'http://res.cloudinary.com/dnf1ydl7w/image/upload/c_fit,h_600,q_80,w_900/path%2Fto%2Fimage%2Fpjqek3dlyogvg6sctm8m', label: '1/1' };
 
   showImage(image: HTMLImageElement) {
+    console.log(image);
     if (!this.appImageViewer) {
       this.appImageViewer = { src: image.src, label: image.alt }
     }

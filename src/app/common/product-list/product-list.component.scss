@@ -1,0 +1,80 @@
+@media (min-width: 320px) {
+     :host {
+        ul {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .youtube-list-item {
+            width: 100%;
+            max-width: 100%;
+            &:hover {
+                box-shadow: none;
+            }
+        }
+    }
+}
+
+@media (min-width: 480px) {
+     :host {
+        .youtube-list-item {
+            width: 33%;
+        }
+    }
+}
+
+@media (min-width: 767px) {
+     :host {
+        .youtube-list-item {
+            max-width: 320px;
+            width: 280px;
+        }
+    }
+}
+
+@media (min-width: 1440px) {
+     :host {
+        .youtube-list-item {
+            width: 28rem;
+        }
+    }
+}
+
+.thumbnail {
+    overflow: hidden;
+    border-radius: 0;
+    clear: both;
+    height: 249px;
+    border: none;
+    background-color: var(--text-primary-color-inverse);
+    padding: 0;
+    box-shadow: none;
+    margin-bottom: 0;
+    .thumb-image {
+        height: 100%;
+        transform: scale(1.7) translatey(0);
+        transition: transform .3s ease-out;
+    }
+}
+
+// btnb group
+// button group
+:host {
+    // display: inline-block;
+    .btn {
+        border: 0;
+        &.btn-default.active {
+            background-color: var(--brand-primary);
+            color: var(--brand-inverse-text);
+        }
+    }
+    .btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+    }
+    .btn-group>.btn:last-child:not(:first-child) {
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+}

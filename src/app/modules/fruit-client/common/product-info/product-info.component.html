@@ -1,0 +1,85 @@
+<section class="youtube-item card ux-maker" [class.show-description]="showDesc">
+  <section class="media-title">
+
+    <div class="front face">
+      <div class="indicators clearfix">
+
+        <span class="pull-left item-is-playing">
+          <i class="fa fa-play"></i>Now Playing
+        </span>
+
+      </div>
+
+      <div rel="tooltip" class="media-thumb" [tooltip]="product.name" (click)="viewProductDetail(product);toggle(showDesc)">
+
+        <div class="thumbnail">
+          <img class="thumb-image" [src]="product.images[0]?.url">
+        </div>
+
+        <section class="stats">
+          <span class="item-duration item-action pull-right">
+            <i class="fa fa-clock-o"></i> {{ product.price }}
+          </span>
+
+          <span class="item-likes item-action" rel="tooltip" title="收藏">
+            <i class="fa fa-thumbs-up"></i> {{ product.price | number:'2.0'}}
+          </span>
+
+          <span class="item-views item-action" rel="tooltip" title="查看">
+            <i class="fa fa-eye"></i> {{ product.price | number:'2.0'}}
+          </span>
+        </section>
+
+        <button class="btn btn-default btn-lg ux-maker play-media">
+          <i class="fa fa-play"></i>
+        </button>
+      </div>
+
+      <section class="item-actions main-actions">
+        <h4 class="title span11">
+          <a href='#/video/' rel="tooltip" class="media-thumb ellipsis" [tooltip]="product.name">
+            {{ product.name}}
+          </a>
+        </h4>
+        <section class="media-actions">
+          <button *ngIf="!status.queued" class="btn btn-link" tooltip="添加商品到购物车" (click)="addToShopingCar(product)">
+            <i class="fa fa-shopping-basket"></i> 到购物车
+          </button>
+          <!-- <button *ngIf="status.queued" class="btn btn-danger" tooltip="从购物车移出" (click)="removeVideoFromQueue(product)">
+            <i class="fa fa-trash"></i> 移除
+          </button>
+           -->
+          <button class="btn btn-link add-to-playlist" tooltip="直接订购" (click)="buyProduct()">
+            <i class="fa fa-plus"></i> 订购
+          </button>
+          <span class="is-strechable"></span>
+          <button (click)="toggle(showDesc)" class="btn btn-xs btn-info fa fa-info-circle" tooltip="产品介绍">
+          </button>
+        </section>
+      </section>
+    </div>
+
+    <div class="description back face">
+      <h4>
+        <a href='https://youtube.com/watch?v={{ product._id }}' target="_blank" tooltip="Open in YouTube" class="media-thumb">
+          <i class="fa fa-youtube"></i> {{ product.name}}</a>
+      </h4>
+
+      <section class="video-thumb playlist-track__thumb" style="width:100%">
+        <!-- <span class="track-number">{{ index + 1 }}</span> -->
+        <img draggable="false" appImageViewer class="video-thumb__image" [src]="image.url" xtitle="Drag to sort" *ngFor="let image of product.images">
+
+
+      </section>
+      <div>{{ product.summary }}</div>
+    </div>
+
+    <section class="item-actions close-desc">
+      <button (click)="toggle(showDesc)" class="btn btn-info btn-xs " tooltip="flip back...">
+        <i class="fa fa-times-circle"></i>
+      </button>
+    </section>
+
+  </section>
+
+</section>

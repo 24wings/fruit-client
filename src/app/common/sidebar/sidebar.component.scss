@@ -1,0 +1,253 @@
+@import '~css/core/global.scss';
+// helpers
+$navbar-new-height: 5rem;
+@mixin closed-sidebar() {
+    .sidebar-left-fixed.closed {
+        @include transform(translatex(0rem));
+        .sidebar-backdrop {
+            display: none;
+        }
+    }
+}
+
+// the code
+@media (min-width: 320px) {
+     :host {
+        position: fixed;
+        bottom: 0;
+        top: 0;
+        left: -30rem;
+        margin: 0;
+        padding: 0rem;
+        z-index: 1030;
+        transition: left .3s;
+        transition-timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
+        &.closed {
+            left: 0;
+        }
+        .sidebar {
+            --sidebar-bg-color: var(--sidebar-bg);
+            --sidebar-brand-bg: var(--brand-primary);
+            --sidebar-text-color: var(--sidebar-text); // flex setup
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: initial;
+            align-self: auto;
+            height: 100%;
+            width: $drawer-width;
+            z-index: $zindex-navbar-fixed; // by default should be hidden
+            transform: translatex(-30rem);
+            background-color: var(--sidebar-bg-color);
+            padding-bottom: 21%;
+            border: none;
+            border-radius: 0; // transition-timing-function: cubic-bezier(0.65, 0.05, 0.36, 1);
+            .navbar-brand {
+                float: none;
+                width: 100%;
+                line-height: $navbar-new-height; // height: $navbar-new-height;
+                padding-left: 1.5rem;
+                color: rgb(50, 53, 56);
+            } // should be displayed
+            &.closed {
+                // transform: translatex(0px);
+                transform: none;
+                .sidebar-backdrop {
+                    position: fixed;
+                    left: $drawer-width;
+                    right: 0;
+                    top: 0;
+                    bottom: 0;
+                    display: block;
+                    background-color: var(--brand-dark-bg-color-transparent);
+                }
+            }
+            .sidebar-backdrop {
+                display: none;
+            }
+            .navbar {
+                margin-bottom: 0;
+                border-bottom: none;
+                z-index: 1030;
+                border-radius: 0;
+                border: none;
+            }
+            .sidebar-backdrop {
+                z-index: 1029;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+     :host {
+        left: 0;
+        .sidebar {
+            transition: transform, width .3s ease-out;
+            transform: none;
+            &.closed>.sidebar-backdrop {
+                display: none;
+            }
+            +.sidebar-backdrop {
+                display: none;
+            }
+            &.closed {
+                // transform: translatex(-30rem);
+                width: $sidebar-closed-width; // .text {
+                // 	display: none;
+                // }
+                .navbar-brand {
+                    /*width: @sidebar-closed-width;*/
+                    padding: 0;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    @include closed-sidebar();
+    .sidebar {
+        // transform: translatex(0px);
+        .sidebar-backdrop {
+            display: none;
+        }
+    }
+}
+
+@import '~css/echoes-variables.scss';
+:host {
+    .list-group {
+        margin: 0;
+    }
+    .list-group-item {
+        $active-color: rgba(10, 10, 10, .5);
+        color: $clouds;
+        border: none;
+        background: transparent;
+        &:hover {
+            background: rgba(10, 10, 10, .2);
+            box-shadow: inset 0px 0px 6px $active-color;
+        }
+        .closed & {
+            text-align: center;
+        }
+        .fa {
+            color: var(--brand-primary);
+            margin-right: 10px;
+            .closed & {
+                margin: 0;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+     :host .closed {
+        width: $sidebar-closed-width;
+        a {
+            text-indent: 0.6rem;
+        }
+        .text {
+            display: none;
+        }
+    }
+}
+
+@import '~css/echoes-variables.scss';
+@media (min-width: 320px) {
+    $track-badge-index: 10;
+    $track-button: 15;
+    $track-border-color: #262829;
+    --track-active-border-color: var(--brand-primary);
+    --track-bg-active-color: var(--brand-dark-bg-color-transparent);
+    .now-playlist {
+        position: relative; // opacity: 0;
+        .nav-list {
+            overflow-x: hidden;
+            > :not(.active) a:hover {
+                background: rgba(10, 10, 10, .2);
+            }
+        }
+        .now-playlist-track {
+            cursor: pointer;
+            opacity: 1;
+            a .playlist-track__content {
+                height: 6rem;
+            }
+        } // .as-sortable-placeholder {
+        // 	background-color: $gray-darker;
+        // 	border: 1px dashed white;
+        // }
+    }
+    .ng-enter+.now-playlist.slide-down {
+        transform: translatey(10px);
+    }
+}
+
+@media (min-width: 768px) {
+    .now-playlist {
+        .now-playlist-track {
+            a .playlist-track__content {
+                overflow: hidden;
+            }
+        }
+    }
+    .closed app-shopinglist-view {
+        .now-playlist-track {
+            a,
+            a.active {
+                padding: 0;
+                min-height: 6rem;
+                margin: 0.7rem 0;
+            }
+            .now-playlist-track__trigger {
+                padding: 0;
+            }
+            .playlist-track__content,
+            .video-title {
+                height: 0;
+            } // .track-number {
+            //     left: 0;
+            // }
+            // .video-thumb {
+            //     height: 5rem;
+            //     width: 7rem;
+            // }
+            .track-tracks {
+                display: none;
+            }
+            .playlist-track {
+                transform: translateX(5rem);
+            }
+        }
+    }
+}
+
+//  nowplaying
+// FLEX LAYOUT START
+:host {
+    $padding-bottom: 31rem;
+    flex-grow: 16;
+    flex-shrink: 0;
+    flex-basis: 0rem;
+    display: flex;
+    flex-direction: column;
+    .sidebar-pane {
+        flex: 1 1 0;
+        display: flex;
+        flex-direction: column; // hidden for hiding top shadow while exposing bottom shadow
+        overflow-y: hidden;
+    }
+    .now-playlist-filter {
+        flex-grow: 0;
+        flex-shrink: 1;
+        flex-basis: 0rem;
+    }
+    .now-playlist {
+        flex: 1 1 0;
+        overflow-y: auto;
+        padding-bottom: $padding-bottom;
+    }
+} // FLEX LAYOUT END

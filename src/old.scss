@@ -1,0 +1,290 @@
+/* You can add global styles to this file, and also import other style files */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+ul,
+li,
+ol {
+    list-style: none;
+}
+
+.u-hidden-visually {
+    position: absolute !important;
+    overflow: hidden !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    border: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;
+}
+
+h1,
+.h1 {
+    font-size: 3em;
+}
+
+@media (min-width: 768px) {
+    .auth-wrapper {
+        margin: -160px 0 0 -300px;
+        position: absolute;
+        left: 50%;
+        top: 40%;
+    }
+}
+
+.auth-wrapper {
+    margin: 0 auto;
+    max-width: 600px;
+    padding-top: 20px;
+    width: 90%;
+}
+
+.admin-page-content {
+    margin-top: 51px;
+    max-width: 1170px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.navbar-default {
+    background-color: #1385e5;
+    color: white;
+    line-height: 40px;
+    position: fixed;
+    z-index: 109;
+    width: 100%;
+}
+
+.navbar-nav {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 20px;
+    padding-right: 20px;
+    max-width: 1170px;
+    clear: both;
+}
+
+.navbar-content {
+    max-width: 1170px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.nav.navbar-nav li a {
+    background: transparent;
+    color: #fff;
+}
+
+.dashboard {
+    font-size: 2em;
+    font-weight: 300;
+    max-width: 1170px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 40px;
+    margin-top: 40px;
+    padding-bottom: 1em;
+}
+
+.icon-2x {
+    font-size: 2rem;
+}
+
+.dashboard-group-heading {
+    color: #999;
+    font-size: 1.5em;
+    font-weight: 500;
+    margin-bottom: .75em;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.app-list {
+    margin: 0 -10px 20px;
+}
+
+.app-item {
+    -o-transition: box-shadow 80ms linear;
+    -webkit-transition: box-shadow 80ms linear;
+    transition: box-shadow 80ms linear;
+    background-color: white;
+    border-radius: .3em;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.075), 0 0 0 1px rgba(0, 0, 0, 0.1);
+    color: #999;
+    display: block;
+    line-height: 1;
+    padding: 15px;
+    padding-right: 54px;
+    position: relative;
+}
+
+.app-label {
+    -webkit-transition: border-color 80ms linear;
+    transition: border-color 80ms linear;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    border-bottom: 1px solid transparent;
+    color: #1385e5;
+    display: inline-block;
+    font-size: 1.25em;
+    font-weight: 500;
+    padding-bottom: .05em;
+    margin-bottom: .2em;
+}
+
+.app-summary {
+    -webkit-transition: box-shadow 80ms linear;
+    transition: box-shadow 80ms linear;
+    background-color: white;
+    border-radius: .3em;
+    /* box-shadow: 0 2px 3px rgba(0,0,0,0.075), 0 0 0 1px rgba(0,0,0,0.1); */
+    color: #999;
+    display: block;
+    line-height: 1;
+    padding: 15px;
+    padding-right: 54px;
+    position: relative;
+}
+
+
+/* 单个图标 */
+
+.app-icon {
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    -o-transition: background-color 80ms linear;
+    -webkit-transition: background-color 80ms linear;
+    transition: background-color 80ms linear;
+    background-color: #eee;
+    border-radius: .3em;
+    color: white;
+    position: absolute;
+    right: 25px;
+    top: calc(50% - 12px);
+}
+
+.circle {
+    border-radius: 50%;
+}
+
+.nav.navbar-nav li a {
+    background: transparent !important;
+    color: #fff !important;
+}
+
+.tab-content {
+    margin-top: 20px;
+}
+
+.red {
+    color: red;
+}
+
+.black {
+    color: black;
+}
+
+.font-2x {
+    font-size: 2rem;
+}
+
+.font-15x {
+    font-size: 1.5rem;
+}
+
+.nav-pills .active a {
+    background: #1385e5;
+}
+
+.nav-pills li a {
+    padding: 10px;
+}
+
+.actions {
+    /* display: -webkit-box; */
+    margin: 10px 15px;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: space-between;
+}
+
+.actions.left {
+    justify-content: flex-start;
+}
+
+.right {
+    justify-content: flex-end;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.checkbox.checked {
+    align-items: center;
+    background: rgb(57, 153, 252);
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.05);
+    border-image: initial;
+    border-radius: 4px;
+    box-shadow: rgba(255, 255, 255, 0.33) 0px 1px 0px;
+    color: white;
+    display: inline-block;
+    font-size: 14px;
+    height: 16px;
+    line-height: 15px;
+    outline: none;
+    padding: 0px;
+    text-align: center;
+    text-shadow: rgba(0, 0, 0, 0.2) 0px 1px 0px;
+    vertical-align: middle;
+    width: 16px;
+    transition: all 120ms ease-out;
+}
+
+.checkbox {
+    align-items: center;
+    background: white;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.3) rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.15);
+    border-image: initial;
+    border-radius: 4px;
+    box-shadow: rgba(0, 0, 0, 0.06) 0px 1px 0px inset;
+    color: rgb(187, 187, 187);
+    display: inline-block;
+    font-size: 14px;
+    height: 16px;
+    line-height: 15px;
+    outline: none;
+    padding: 0px;
+    text-align: center;
+    vertical-align: middle;
+    width: 16px;
+    transition: all 120ms ease-out;
+}
+
+.field {
+    margin: 25px auto;
+}
+
+.thumbnail>img {
+    width: 100%;
+}

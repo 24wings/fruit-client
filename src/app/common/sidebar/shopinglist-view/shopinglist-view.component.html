@@ -1,0 +1,12 @@
+<section class="now-playlist ux-maker">
+  <ul class="nav nav-list ux-maker nicer-ux">
+    <!-- {{shopingCarOrders| json}} -->
+    <!-- [ngClass]="{
+        'active': isActiveMedia(video.id, playlistTrack)
+        }" -->
+    <li class="now-playlist-track" #playlistTrack *ngFor="let order of shopingCarOrders  let index = index" [@flyOut]>
+      <!-- <now-playlist-track [order]="order" [index]="index" (remove)="removeVideo($event)" (select)="selectVideo(order)" (selectTrack)="selectTrackInVideo($event)"></now-playlist-track> -->
+      <app-order-info [order]="order" [index]="index" (onRefersh)="listOrders()"></app-order-info>
+    </li>
+  </ul>
+</section>

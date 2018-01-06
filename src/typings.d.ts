@@ -50,3 +50,14 @@ interface FruitProduct {
   createDt?: Date;
 
 }
+
+interface FruitOrder {
+  _id?: string;
+  createDt: Date;
+  product: any;
+  orderUser: any;
+  state: number;
+  admin: any;
+  num: number;
+
+}

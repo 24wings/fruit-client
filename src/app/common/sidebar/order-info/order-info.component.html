@@ -1,0 +1,49 @@
+<div class="now-playlist-track__trigger">
+  <div class="track-contents">
+    <section class="video-thumb playlist-track__thumb">
+      <span class="track-number">{{ index + 1 }}</span>
+      <img draggable="false" class="video-thumb__image" [src]="order.product.images[0]?.url" xtitle="Drag to sort" appImageViewer>
+      <span class="badge badge-info">
+        {{ order.num }} 件
+      </span>
+    </section>
+
+    <section class="video-title" [tooltip]="order.product.name">{{ order.product.name }}</section>
+  </div>
+  <aside class="playlist-track__content">
+    <section class="track-actions">
+      <button class="btn label btn-info playlist-track" (click)="order.num >0 ? order.num -1:1" *ngIf="order.state==FruitOrderState.UnConfirm">
+        -</button>
+      <button class="btn label btn-default   playlist-track" style="color:black" *ngIf="order.state==FruitOrderState.UnConfirm">{{order.num}}</button>
+      <button class="btn label btn-info  playlist-track" (click)="order.num = order.num +1" *ngIf="order.state==FruitOrderState.UnConfirm">
+        +</button>
+
+
+      <!--  *ngIf="isPlaylistMedia(order)" -->
+      <!-- <button class="btn label btn-primary fa fa-list-ul playlist-track" (click)="handleToggleTracks($event, order)" tooltip="Album Track - click to select cued tracks"></button> -->
+      <button class="btn label btn-info fa fa-info-circle playlist-track" (click)="toggleInfo()" tooltip="详情"></button>
+      <button class="btn label btn-success fa fa-check-circle playlist-track" (click)="confirmOrder()" *ngIf="order.state==FruitOrderState.UnConfirm"
+        tooltip="确认"></button>
+
+
+    </section>
+
+    <span class="label label-danger ux-maker remove-track" tooltip="移除" (click)="remove(order)">
+      <i class="fa fa-trash"></i>
+    </span>
+
+  </aside>
+
+  <article *ngIf="displayInfo" class="track-info">
+    {{ order.product.summary }}
+
+    <section class="video-thumb playlist-track__thumb" style="width:100%">
+      <span class="track-number">{{ index + 1 }}</span>
+      <img appImageViewer draggable="false" class="video-thumb__image" [src]="image.url" xtitle="Drag to sort" *ngFor="let image of order.product.images">
+
+      <span class="badge badge-info">
+        {{ order.num }} 件
+      </span>
+    </section>
+  </article>
+</div>

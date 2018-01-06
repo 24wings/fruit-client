@@ -1,1 +1,14 @@
-<router-outlet></router-outlet>
+<!-- <app-player class="navbar navbar-default navbar-fixed-bottom"></app-player> -->
+
+<app-sidebar [class.closed]="sidebarColsed" #sidebar (onToggleSidebar)="sidebarColsed=!sidebarColsed"></app-sidebar>
+
+
+<div class="container-main">
+    <!-- <router-outlet></router-outlet> -->
+
+    <app-fruit-client-main-page (onRefershOrder)="sidebar.refershOrders()" (onThemeChange)="style=$event"></app-fruit-client-main-page>
+</div>
+
+<button (click)="style='北极'">北极</button>
+<button (click)="style='别致'">ssa</button>
+<button></button>

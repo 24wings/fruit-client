@@ -1,0 +1,214 @@
+@import '~css/core/global.scss';
+@media (min-width: 320px) {
+     :host {
+        $gap-top: 10.5rem;
+        >article {
+            padding-top: $gap-top;
+        }
+    }
+}
+
+@media (min-width: 320px) {
+    $input-search-box-height: $input-height-base;
+    $input-search-box-width: 25rem;
+    $form-bg-color: $input-bg;
+    .product-search {
+        display: inline-block;
+        .form-search {
+            float: none;
+            position: relative;
+            border: 0;
+            .btn-submit {
+                position: absolute;
+                right: 0rem;
+                top: 0;
+                padding: 0.4rem 1rem 0.7rem 1rem;
+                color: $navbar-default-link-active-color;
+            }
+            .dropdown-menu {
+                box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 8px 0px;
+                transform: translatey(0rem);
+                max-height: none;
+                background-color: white;
+                opacity: 1;
+                >li.active a {
+                    color: $inverse;
+                }
+                >li a {
+                    color: #444;
+                    line-height: 3;
+                }
+            }
+            .form-group {
+                background-color: $form-bg-color;
+                border-radius: 3px;
+                position: relative;
+            }
+            input.form-control {
+                width: $input-search-box-width;
+                height: $input-search-box-height;
+                border: none;
+                box-shadow: none;
+            }
+        }
+        .results {
+            position: absolute;
+            top: $input-search-box-height;
+            z-index: 10;
+            box-shadow: 0rem 0.3rem 3rem -0.5rem rgba(0, 0, 0, .5);
+            .list-group-item {
+                border-radius: 0;
+                &.active {
+                    background-color: var(--brand-primary);
+                    border-color: var(--brand-primary);
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 460px) {
+    .product-search {
+        .form-search {
+            input.form-control {
+                display: inline-block;
+            }
+            .btn-submit {
+                position: relative;
+                top: 0;
+                right: auto;
+            }
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .product-search {}
+}
+
+@media (min-width: 320px) {
+    .app-navbar {
+        $zindex: 1020;
+        $user-icon-size: 4rem;
+        $navbar-container-padding: 0.5rem 5rem;
+        $navbar-new-height: 1rem;
+        display: block;
+        nav.navbar {
+            margin-left: 0;
+            background-image: none;
+            background-color: var(--navbar-bg-color);
+            border-color: var(--navbar-bg-color);
+            color: var(--navbar-text-color);
+            box-shadow: 0 1px 7px rgba(0, 0, 0, 0.5);
+            transition: transform, margin-left .3s ease-out;
+            z-index: $zindex;
+        } // .navbar-brand {
+        //   line-height: 2;
+        //   float: none;
+        //   height: auto;
+        // }
+        .user-icon {
+            width: $user-icon-size;
+            height: $user-icon-size;
+            vertical-align: middle;
+            border-radius: 50%;
+            border: 1px solid #fff;
+            box-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+        }
+        .navbar-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: $navbar-container-padding;
+            .navbar__content {
+                flex: 3 0 0;
+                padding-left: 0;
+                display: flex;
+                flex-flow: wrap;
+                justify-content: center;
+                .navbar-header {
+                    width: auto;
+                    margin-right: 7px;
+                    line-height: $navbar-new-height;
+                    .fa {
+                        margin-right: 10px;
+                    }
+                    .navbar-btn__main {
+                        box-shadow: none;
+                        border: none;
+                        padding-top: 0;
+                        padding-bottom: 0;
+                    }
+                }
+            }
+            .navbar__header {
+                color: var(--brand-primary);
+            }
+        }
+        .navbar-collapse {
+            display: inline-block;
+        }
+        .navbar-text {
+            margin: 0;
+            line-height: 2;
+        }
+        .navbar-brand {
+            margin-left: 0 !important;
+        }
+        .navbar-actions {
+            display: flex;
+            flex: 1;
+            flex-direction: column-reverse;
+            justify-content: flex-end;
+            padding-right: 1rem;
+            position: absolute;
+            right: 0;
+            top: 0;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    $navbar-container-left-padding: 2.5rem;
+    .app-navbar {
+        nav.navbar.navbar-fixed-top {
+            margin-left: $drawer-width;
+        }
+        .navbar-container {
+            padding: 0.5rem 0;
+            .navbar__content {
+                display: block;
+                padding-left: $navbar-container-left-padding;
+            }
+        }
+        .navbar-actions {
+            position: relative;
+            flex-direction: row;
+        }
+    }
+    .closed+.container-main app-navbar .navbar {
+        margin-left: $sidebar-closed-width;
+    }
+}
+
+// button group
+:host {
+    // display: inline-block;
+    .btn {
+        border: 0;
+        &.btn-default.active {
+            background-color: var(--brand-primary);
+            color: var(--brand-inverse-text);
+        }
+    }
+    .btn-group>.btn:first-child:not(:last-child):not(.dropdown-toggle) {
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+    }
+    .btn-group>.btn:last-child:not(:first-child) {
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+    }
+}
+
+// app.compnents.css
